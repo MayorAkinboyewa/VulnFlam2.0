@@ -1,0 +1,25 @@
+# Core Dependencies
+python-dateutil>=2.8.2
+
+# LLM API Clients
+openai>=1.0.0  # For OpenAI GPT models
+anthropic>=0.18.0  # For Claude models (optional)
+
+# Scanning Tools (install separately via system package manager or pip)
+# bandit  # Python SAST - install with: pip install bandit
+# safety  # Python dependency checker - install with: pip install safety
+# semgrep # Multi-language SAST - install with: pip install semgrep
+# Note: Trivy should be installed system-wide via package manager
+
+# CLI and Configuration
+click>=8.1.0  # CLI framework
+pyyaml>=6.0  # YAML configuration support
+python-dotenv>=1.0.0  # Environment variable management
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Logging and Progress
+tqdm>=4.66.0  # Progress bars
+colorama>=0.4.6  # Colored terminal output

@@ -1,0 +1,103 @@
+# Vulnerability Pipeline Configuration
+# This configuration file aligns with the system design in Chapter 3, Section 3.2
+
+# LLM Configuration (Chapter 3, Section 3.4)
+llm:
+  # API provider: 'openai', 'anthropic', or 'mock' for testing
+  provider: openai
+  
+  # Model selection
+  model: gpt-4  # or gpt-3.5-turbo for faster/cheaper analysis
+  
+  # API key (alternatively set via OPENAI_API_KEY environment variable)
+  api_key: ${OPENAI_API_KEY}
+  
+  # Model parameters (Chapter 3, Section 3.4.4)
+  temperature: 0.3  # Low for deterministic output
+  max_tokens: 1000
+  top_p: 0.9
+  
+  # Rate limiting
+  max_concurrent_requests: 5
+  request_delay: 0.5  # seconds between requests
+
+# Scanner Configuration (Chapter 3, Section 3.3.1)
+scanners:
+  # Enable/disable specific scanners
+  bandit:
+    enabled: true
+    # Additional bandit-specific config can go here
+  
+  trivy:
+    enabled: true
+    scan_type: fs  # 'fs' for filesystem, 'image' for container
+  
+  safety:
+    enabled: true
+    # Looks for requirements.txt automatically
+  
+  semgrep:
+    enabled: true
+    rules: auto  # or specific ruleset like 'p/security-audit'
+
+  # --- Network scanners (active only when --scan-type network) ---
+
+  nikto:
+    enabled: true
+    # Scans web servers for dangerous files, outdated software, and misconfigurations
+    # Target must be a host/URL, e.g. http://192.168.1.10 or 192.168.1.10
+
+  nmap:
+    enabled: true
+    # Port scanner + NSE vulnerability scripts (--script vuln)
+    # Target must be a host/IP/CIDR, e.g. 192.168.1.10 or 192.168.1.0/24
+    scripts: vuln  # NSE script category; change to 'safe' for non-intrusive mode
+
+# Scanning Options
+scan:
+  # Run scanners in parallel for faster execution
+  parallel: true
+  max_workers: 4
+
+  # Scan type controls which scanners activate:
+  #   filesystem    -> bandit, trivy (fs), safety, semgrep
+  #   container     -> trivy (image)
+  #   dependencies  -> safety, trivy
+  #   network       -> nikto, nmap
+  type: filesystem
+
+  # Deduplication
+  deduplicate: true
+
+# Report Configuration (Chapter 3, Section 3.5)
+reports:
+  # Output directory for reports
+  output_dir: ./reports
+  
+  # Formats to generate
+  formats:
+    - json      # Machine-readable for CI/CD
+    - markdown  # VCS-friendly
+    - html      # Interactive human review
+  
+  # Include LLM analysis in reports
+  include_llm_analysis: true
+
+# Pipeline Options
+pipeline:
+  # Continue on scanner errors (don't fail entire pipeline)
+  continue_on_error: true
+  
+  # Verbose logging
+  verbose: false
+  
+  # Log file path
+  log_file: ./pipeline.log
+
+# Paths
+paths:
+  # Temporary directory for scanner outputs
+  scan_output_dir: /tmp/vuln_scans
+  
+  # Report output directory
+  report_output_dir: ./reports

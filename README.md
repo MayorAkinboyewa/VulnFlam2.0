@@ -2,7 +2,6 @@
 
 This is a Python application that orchestrates multiple security scanning tools, processes their outputs intelligently, and generates actionable developer reports using LLM-powered analysis.
 
-This implementation follows the methodology described in Chapter Three of the BSc project: "An LLM-Driven Approach to Automated Vulnerability Analysis"
 
 ## 📋 Table of Contents
 

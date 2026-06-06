@@ -520,17 +520,9 @@ This project is part of a BSc project and is provided for educational and resear
 
 ## 👤 Author
 
-**Akinboyewa Mayowa Akintomide** (EU220102-3129)  
+**Akinboyewa Mayowa Akintomide** 
 BSc Cyber Security  
 Elizade University, Ilara-Mokin
-
-**Supervisor**: Dr. Folasade Aliu
-
-## 🙏 Acknowledgments
-
-- Chapter 3 methodology design based on Design Science Research principles (Hevner et al., 2004)
-- LLM integration inspired by recent research on AI-enhanced DevSecOps (Fu et al., 2025)
-- Prompt engineering techniques from Nong et al. (2024) on chain-of-thought for vulnerability analysis
 
 ## 📚 References
 

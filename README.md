@@ -30,7 +30,7 @@ The pipeline is designed for **resource-constrained environments** and supports 
 
 ## 🏗️ Architecture
 
-The pipeline follows a 4-layer architecture (Chapter 3, Section 3.2.2):
+The pipeline follows a 4-layer architecture:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -522,12 +522,3 @@ This project is part of a BSc project and is provided for educational and resear
 **Akinboyewa Mayowa Akintomide** 
 BSc Cyber Security  
 Elizade University, Ilara-Mokin
-
-## 📚 References
-
-See the full project document for comprehensive references to:
-
-- Design Science Research methodology
-- LLM-enhanced vulnerability detection literature
-- DevSecOps pipeline integration studies
-- Prompt engineering techniques for security
